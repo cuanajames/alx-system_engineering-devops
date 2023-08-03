@@ -1,5 +1,4 @@
 #!/bin/bash
-# Find all subdirectories in the current directory and add execute permission for owner, group, and others
 find . -type d -exec chmod a+x {} +
-echo "Execute permission added to all subdirectories in the current directory."
+
 
