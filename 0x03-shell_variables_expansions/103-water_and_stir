@@ -1,1 +1,21 @@
-#!/bin/bash\nwater="${WATER}"\nstir="${STIR}"\ndecimal_water=$(echo "ibase=water; $water" | bc)\ndecimal_stir=$(echo "ibase=stir; $stir" | bc)\ndecimal_result=$((decimal_water + decimal_stir))\necho "Result:   $(echo "obase=bestchol; $decimal_result" | bc)"
+#!/bin/bash
+
+# Get the values from environment variables
+water="${WATER}"
+stir="${STIR}"
+
+# Convert from base water and base stir to decimal
+decimal_water=$(echo "ibase=water; $water" | bc)
+decimal_stir=$(echo "ibase=stir; $stir" | bc)
+
+# Add the decimal values
+decimal_result=$((decimal_water + decimal_stir))
+
+# Convert the decimal result to base bestchol
+base_bestchol_result=$(echo "obase=bestchol; $decimal_result" | bc)
+
+# Display the result
+echo "WATER:    $water"
+echo "STIR:     $stir"
+echo "Result:   $base_bestchol_result"
+
