@@ -1,3 +1,1 @@
-#!/bin/bash
-echo $(printf %o $(($((5#$(echo $WATER | tr 'water' '01234'))) + $((5#$(echo $STIR | tr 'stir.' '01234'))))) | tr '01234567' 'bestchol')
-
+#!/bin/bash\nwater="${WATER}"\nstir="${STIR}"\ndecimal_water=$(echo "ibase=water; $water" | bc)\ndecimal_stir=$(echo "ibase=stir; $stir" | bc)\ndecimal_result=$((decimal_water + decimal_stir))\necho "Result:   $(echo "obase=bestchol; $decimal_result" | bc)"
